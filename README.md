@@ -6,6 +6,28 @@
 
 아두이노 코드
 
+void setup()
+{   
+  pinMode(3, INPUT); 
+  pinMode(2, OUTPUT);
+  Serial.begin(9600);
+}
+int irDetect(int irLedPin, int irReceiverPin, long frequency)
+{
+  tone(irLedPin, frequency, 8);
+  delay(1);
+  int ir = digitalRead(irReceiverPin);
+  delay(1);
+  return ir;
+}
+void loop()
+{
+  int wr = irDetect(2, 3, 42000);
+  Serial.print("  ");
+  Serial.println(wr);
+  delay(100);
+}
+
 앱인벤터 블럭코딩 
 
 ![앱인벤터](https://user-images.githubusercontent.com/50895124/70435126-5a107c80-1ac9-11ea-89da-fe2f45d53932.PNG)
